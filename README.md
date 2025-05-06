@@ -22,7 +22,7 @@
 
 ```bash
 # If you maintain your own tap:
-brew tap yourusername/tap
+brew tap wess/packages
 brew install purge
 ```
 
