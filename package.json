@@ -1,0 +1,25 @@
+{
+  "name": "purge",
+  "module": "src/main.ts",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:mac-x64": "bun build src/main.ts --compile --outfile dist/prg-macos-x64 --target=bun-darwin-x64",
+    "build:mac-arm64": "bun build src/main.ts --compile --outfile dist/prg-macos-arm64 --target=bun-darwin-aarch64",
+    "build:mac": "bun run build:mac-x64 && bun run build:mac-arm64",
+    "zip:mac-x64": "bun run build:mac-x64 && zip -j dist/purge-${bun_package_version}-macos-x64.zip dist/prg-macos-x64",
+    "zip:mac-arm64": "bun run build:mac-arm64 && zip -j dist/purge-${bun_package_version}-macos-arm64.zip dist/prg-macos-arm64",
+    "release": "bun run zip:mac-x64 && bun run zip:mac-arm64"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "enquirer": "^2.4.1",
+    "plist": "^3.1.0"
+  }
+}

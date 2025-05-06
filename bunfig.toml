@@ -1,0 +1,6 @@
+[bin]
+name = "prg"
+entry = "src/index.ts"
+
+[scripts]
+build = "bun build ./src/main.ts --compile --outfile dist/prg"
