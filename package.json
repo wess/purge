@@ -1,16 +1,25 @@
 {
   "name": "purge",
-  "module": "src/main.ts",
+  "description": "A CLI tool to completely uninstall macOS Apps",
   "version": "0.0.1",
+  "module": "src/main.ts",
   "type": "module",
-  "private": true,
+  "private": false,
+    "bin": {
+    "prg": "./src/main.ts"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "build:mac-x64": "bun build src/main.ts --compile --outfile dist/prg-macos-x64 --target=bun-darwin-x64",
-    "build:mac-arm64": "bun build src/main.ts --compile --outfile dist/prg-macos-arm64 --target=bun-darwin-aarch64",
-    "build:mac": "bun run build:mac-x64 && bun run build:mac-arm64",
-    "zip:mac-x64": "bun run build:mac-x64 && zip -j dist/purge-${bun_package_version}-macos-x64.zip dist/prg-macos-x64",
-    "zip:mac-arm64": "bun run build:mac-arm64 && zip -j dist/purge-${bun_package_version}-macos-arm64.zip dist/prg-macos-arm64",
-    "release": "bun run zip:mac-x64 && bun run zip:mac-arm64"
+    "compile:linux-x64": "bun build --compile --target=bun-linux-x64    --outfile=build/linux-x64/purge     src/main.ts",
+    "compile:darwin-x64": "bun build --compile --target=bun-darwin-x64   --outfile=build/darwin-x64/purge    src/main.ts",
+    "compile:darwin-arm64": "bun build --compile --target=bun-darwin-arm64 --outfile=build/darwin-arm64/purge  src/main.ts",
+    "compile:windows-x64": "bun build --compile --target=bun-windows-x64 --outfile=build/windows-x64/purge.exe src/main.ts",
+    "compile": "bun run compile:linux-x64 && bun run compile:darwin-x64 && bun run compile:darwin-arm64 && bun run compile:windows-x64",
+    "dev": "bun dev src/main.ts",
+    "test": "bun test",
+    "release": "bun run compile && bun publish --access public"
   },
   "devDependencies": {
     "@types/bun": "latest"

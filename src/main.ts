@@ -70,7 +70,7 @@ async function zap(appPaths: string[]) {
 async function main() {
   const apps = process.argv.slice(2);
   if (apps.length === 0) {
-    console.error("Usage: zapper /path/to/App1.app [/path/to/App2.app …]");
+    console.error("Usage: prg /path/to/App1.app [/path/to/App2.app …]");
     process.exit(1);
   }
   await zap(apps);
