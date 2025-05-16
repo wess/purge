@@ -1,7 +1,7 @@
 # purge (prg)
 
 <p align="center">
-  <strong>purge</strong> (<code>prg</code>) is a simple, AppZapper‑style command‑line uninstaller for macOS applications.
+  <strong>purge</strong> (<code>prg</code>) is a simple command‑line uninstaller for macOS applications.
 </p>
 
 ## 📜 Overview
