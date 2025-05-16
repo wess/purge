@@ -26,13 +26,6 @@ brew tap wess/packages
 brew install purge
 ```
 
-### Shell script
-
-```bash
-# Direct install via curl
-curl -sSL https://raw.githubusercontent.com/wess/purge/main/install.sh | bash
-```
-
 ### Manual build
 
 ```bash
@@ -52,8 +45,9 @@ tln -sf "$(pwd)/dist/prg-macos-$(uname -m)" /usr/local/bin/prg
 
 Run `prg` followed by one or more `.app` bundle paths:
 
-````bash
-# Uninstall Slack.app\prg /Applications/Slack.app\```
+```bash
+$ prg /Applications/SomeApp.app
+```
 
 You’ll see a checklist of all related files. Uncheck items to keep them; press Enter to trash the rest.
 
