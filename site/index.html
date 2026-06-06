@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>purge (prg) — a clean macOS app uninstaller for your terminal</title>
+    <meta
+      name="description"
+      content="purge (prg) is a simple command-line uninstaller for macOS apps. It removes an app bundle and every associated file — preferences, caches, support files, and receipts — with an interactive checklist."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>:root{--accent:#2dd4bf;--accent2:#0ea5a4}</style>
+  </head>
+  <body>
+    <!-- nav -->
+    <nav class="nav">
+      <div class="wrap">
+        <a class="brand" href="index.html"><span class="mark">⌦</span> purge</a>
+        <button class="navtoggle" aria-label="Menu" data-nav>☰</button>
+        <div class="navlinks" data-navlinks>
+          <a href="#features">Features</a>
+          <a href="#start">Get started</a>
+          <a href="docs.html">Docs</a>
+          <a class="btn primary" href="https://github.com/wess/purge">GitHub</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- hero -->
+    <header class="hero">
+      <div class="wrap">
+        <span class="pill"><span class="dot"></span> macOS · single-file binary · zero leftovers</span>
+        <h1>Drag-to-trash <span class="accent">leaves a mess</span>. prg doesn't.</h1>
+        <p class="lead">
+          <code>purge</code> (<code>prg</code>) is a simple command-line uninstaller for macOS apps. It removes the app
+          bundle and every file it left behind — preferences, caches, support files, and receipts — by parsing the
+          bundle's metadata and scanning the directories macOS actually uses.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="#start">Get started</a>
+          <a class="btn ghost" href="https://github.com/wess/purge">View on GitHub →</a>
+        </div>
+
+        <!-- terminal mockup -->
+        <div class="mock">
+          <div class="bar">
+            <span class="hash">$</span><span>prg /Applications/SomeApp.app</span>
+            <span class="dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="body">
+            <div class="msg">
+              <div class="av">📦</div>
+              <div>
+                <div class="who">Bundle <small>com.someco.someapp</small></div>
+                <div class="txt">Parsed Info.plist — CFBundleIdentifier and CFBundleName resolved.</div>
+              </div>
+            </div>
+            <div class="msg">
+              <div class="av" style="background: linear-gradient(135deg, #2dd4bf, #0ea5a4)">🔎</div>
+              <div>
+                <div class="who">Scan <small>~/Library · /var/db/receipts</small></div>
+                <div class="txt">Found 7 related files across Preferences, Caches, Application Support, and receipts.</div>
+              </div>
+            </div>
+            <div class="msg">
+              <div class="av">☑️</div>
+              <div>
+                <div class="who">Select <small>interactive</small></div>
+                <div class="txt">Uncheck anything you want to keep, then press Enter to move the rest to the Trash.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- features -->
+    <section class="block" id="features">
+      <div class="wrap">
+        <div class="eyebrow">Features</div>
+        <h2>An uninstaller that actually finds the leftovers.</h2>
+        <p class="sub">
+          No GUI, no kernel extensions, no daemon — just a fast binary that reads the bundle and checks the places
+          macOS hides files.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <div class="ico">📦</div>
+            <h3>Bundle metadata parsing</h3>
+            <p>Extracts <code>CFBundleIdentifier</code> and <code>CFBundleName</code> straight from the app's <code>Info.plist</code> to know what to look for.</p>
+          </div>
+          <div class="card">
+            <div class="ico">🔎</div>
+            <h3>Targeted scan paths</h3>
+            <p>Searches only standard macOS locations — <code>~/Library/Preferences</code>, <code>~/Library/Caches</code>, <code>/var/db/receipts</code>, and more — for speed and accuracy.</p>
+          </div>
+          <div class="card">
+            <div class="ico">☑️</div>
+            <h3>Interactive selection</h3>
+            <p>Presents a checklist of every candidate file so you choose exactly what to keep and what to delete.</p>
+          </div>
+          <div class="card">
+            <div class="ico">👀</div>
+            <h3>Dry-run preview</h3>
+            <p>Preview all candidate files with <code>--dry-run</code> before anything is trashed. (Coming soon.)</p>
+          </div>
+          <div class="card">
+            <div class="ico">⚡</div>
+            <h3>Single-file binary</h3>
+            <p>Shipped as a self-contained executable via <code>bun build --compile</code> — no Bun runtime required on the target machine.</p>
+          </div>
+          <div class="card">
+            <div class="ico">🖥️</div>
+            <h3>Built for macOS</h3>
+            <p>Knows where Apple apps stash preferences, caches, support files, and package receipts — so you don't have to.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- how it works -->
+    <section class="block" id="how">
+      <div class="wrap">
+        <div class="eyebrow">How it works</div>
+        <h2>Point it at a .app and confirm.</h2>
+        <p class="sub">Four quick steps from one command to a clean system — with you in control the whole way.</p>
+        <div class="steps">
+          <div class="step">
+            <h4>Read the bundle</h4>
+            <p>prg parses the app's <code>Info.plist</code> for its bundle identifier and name.</p>
+          </div>
+          <div class="step">
+            <h4>Scan known paths</h4>
+            <p>It checks the standard macOS directories where related files live, matching on identifier and name.</p>
+          </div>
+          <div class="step">
+            <h4>You choose</h4>
+            <p>An interactive checklist lets you uncheck anything you want to keep.</p>
+          </div>
+          <div class="step">
+            <h4>Trash the rest</h4>
+            <p>Press Enter and the remaining files — plus the app bundle — go to the Trash.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- get started -->
+    <section class="block" id="start">
+      <div class="wrap">
+        <div class="eyebrow">Get started</div>
+        <h2>Installed in a minute.</h2>
+        <p class="sub">Install with Homebrew, then point prg at any app bundle.</p>
+        <div class="code" style="margin-top: 32px; max-width: 720px">
+          <div class="top">
+            <span>terminal</span>
+            <button class="copy" data-copy>Copy</button>
+          </div>
+          <pre data-code><span class="c"># install with Homebrew</span>
+brew tap wess/packages
+brew install purge
+
+<span class="c"># uninstall an app and everything it left behind</span>
+prg /Applications/SomeApp.app
+
+<span class="c"># preview without deleting anything</span>
+prg --dry-run /Applications/SomeApp.app</pre>
+        </div>
+
+        <p class="sub" style="margin-top: 32px">Prefer to build it yourself?</p>
+        <div class="code" style="margin-top: 16px; max-width: 720px">
+          <div class="top">
+            <span>build from source</span>
+            <button class="copy" data-copy>Copy</button>
+          </div>
+          <pre data-code><span class="c"># clone the repo</span>
+git clone https://github.com/wess/purge.git
+cd purge
+
+<span class="c"># install deps and build (macOS x64 + arm64)</span>
+npm install
+npm run build:mac
+
+<span class="c"># link the binary onto your PATH</span>
+ln -sf "$(pwd)/dist/prg-macos-$(uname -m)" /usr/local/bin/prg</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- cta band -->
+    <section class="band">
+      <div class="wrap">
+        <h2>Uninstall like you mean it.</h2>
+        <p>Open source under the MIT License. Grab the binary, or read the source and send a PR.</p>
+        <div class="cta">
+          <a class="btn primary" href="docs.html">Read the docs</a>
+          <a class="btn ghost" href="https://github.com/wess/purge">View on GitHub →</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <a class="brand" href="index.html"><span class="mark">⌦</span> purge</a>
+        <div class="links">
+          <a href="docs.html">Docs</a>
+          <a href="#start">Get started</a>
+          <a href="../README.md">Readme</a>
+          <a href="https://github.com/wess/purge">GitHub</a>
+        </div>
+        <span>MIT License · © 2026</span>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
