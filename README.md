@@ -64,3 +64,5 @@ You’ll see a checklist of all related files. Uncheck items to keep them; press
 ## 📝 License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+♥ [Sponsor this project](https://github.com/sponsors/wess)
